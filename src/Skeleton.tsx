@@ -23,7 +23,7 @@ export const Skeleton: FC<SkeletonProps> = ({
   width = '100%',
   height,
   color = '#ebebeb',
-  borderRadius = 3,
+  borderRadius = 4,
   spacing = 10,
   style,
   containerStyle,
