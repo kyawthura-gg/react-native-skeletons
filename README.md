@@ -16,24 +16,43 @@ npm install react-native-skeletons
 
 ## Usage
 
-Simple skeleton:
+Simple one line skeleton:
 
 ```js
-<Skeleton width={'100%'} height={14} />
+  <Skeleton />
 ```
 
-Skeleton with circle prop:
+Skeleton with circle:
 
 ```js
-<Skeleton circle width={40} height={40} />
+  <Skeleton circle width={40} height={40} />
 ```
 
-Skeleton with count prop:
+Skeleton with count value:
 
 ```js
-<Skeleton count={4} width={'100%'} height={14} />
+  <Skeleton count={4} width={'100%'} height={14} />
 ```
 
+Skeleton with custom styles:
+
+```js
+  <Skeleton
+    count={4}
+    width={'100%'}
+    height={14}
+    color={'grey'}
+    borderRadius={10}
+    containerStyle={styles.myCustomStyle}
+    style={styles.skeletonStyle}
+  />
+```
+
+Skeleton with spacing value:
+
+```js
+   <Skeleton count={14} spacing={20} />
+```
 
 ## Props Reference
 
@@ -59,7 +78,7 @@ Skeleton with count prop:
         <tr>
             <td><code>height</code></td>
             <td>The height of each skeleton line.</td>
-            <td></td>
+            <td>14</td>
         </tr>
         <tr>
             <td><code>borderRadius</code></td>
