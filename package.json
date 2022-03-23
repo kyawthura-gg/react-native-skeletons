@@ -1,6 +1,6 @@
 {
   "name": "react-native-skeletons",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Fully customizable small library with no extra dependencies for creating animated loading skeletons",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
