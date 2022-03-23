@@ -21,7 +21,7 @@ export const Skeleton: FC<SkeletonProps> = ({
   count,
   circle,
   width = '100%',
-  height,
+  height = 14,
   color = '#ebebeb',
   borderRadius = 4,
   spacing = 10,
@@ -72,7 +72,7 @@ export const Skeleton: FC<SkeletonProps> = ({
     return <SkeletonView />;
   }
   return (
-    <View style={[containerStyle, styles.container]}>
+    <View style={[containerStyle, styles.wFull]}>
       {Array.from({ length: count }).map((_, i) => (
         <SkeletonView
           key={i}
@@ -84,7 +84,8 @@ export const Skeleton: FC<SkeletonProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
+  wFull: {
     width: '100%',
+    flexShrink: 1,
   },
 });
