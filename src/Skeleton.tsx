@@ -32,7 +32,14 @@ export const Skeleton: FC<SkeletonProps> = ({
   const opacity = useRef(new Animated.Value(0.3));
 
   if (circle) {
-    radius = '50%';
+    if (width !== height) {
+      console.warn('Circle skeleton should have the same width and height');
+    }
+    if (typeof width === 'number') {
+      radius = width / 2;
+    } else {
+      console.warn('Circle skeleton should have a number width');
+    }
   }
 
   useEffect(() => {
