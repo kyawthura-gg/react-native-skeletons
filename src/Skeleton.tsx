@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useEffect, useMemo, useRef } from 'react';
 import { Animated, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 interface SkeletonProps {
@@ -7,7 +7,7 @@ interface SkeletonProps {
   width?: number | string;
   height?: number | string;
   color?: string;
-  borderRadius?: number | string;
+  borderRadius?: number;
   style?: StyleProp<ViewStyle>;
   spacing?: number;
   containerStyle?: StyleProp<ViewStyle>;
@@ -28,29 +28,39 @@ export const Skeleton: FC<SkeletonProps> = ({
   style,
   containerStyle,
 }) => {
-  let radius = borderRadius;
-  const opacity = useRef(new Animated.Value(0.3));
+  const opacity = useRef(new Animated.Value(0.3)).current;
 
-  if (circle) {
-    if (width !== height) {
-      console.warn('Circle skeleton should have the same width and height');
+  const appStyle = useMemo<ViewStyle>(() => {
+    const opacityValue = opacity as unknown as number;
+    let radius = borderRadius;
+    if (circle) {
+      if (width !== height) {
+        console.warn('Circle skeleton should have the same width and height');
+      }
+      if (typeof width === 'number') {
+        radius = width / 2;
+      } else {
+        console.warn('Circle skeleton should have a number width');
+      }
     }
-    if (typeof width === 'number') {
-      radius = width / 2;
-    } else {
-      console.warn('Circle skeleton should have a number width');
-    }
-  }
+    return {
+      width: width,
+      height: height,
+      borderRadius: radius,
+      backgroundColor: color,
+      opacity: opacityValue,
+    };
+  }, [borderRadius, circle, color, height, opacity, width]);
 
   useEffect(() => {
     Animated.loop(
       Animated.sequence([
-        Animated.timing(opacity.current, {
+        Animated.timing(opacity, {
           toValue: 1,
           duration: 500,
           useNativeDriver: true,
         }),
-        Animated.timing(opacity.current, {
+        Animated.timing(opacity, {
           toValue: 0.3,
           duration: 800,
           useNativeDriver: true,
@@ -60,19 +70,7 @@ export const Skeleton: FC<SkeletonProps> = ({
   }, [opacity]);
 
   const SkeletonView: FC<SkeletonViewProps> = ({ skStyle }) => (
-    <Animated.View
-      style={[
-        {
-          width: width,
-          height: height,
-          borderRadius: radius,
-          backgroundColor: color,
-          opacity: opacity.current,
-        },
-        style,
-        skStyle,
-      ]}
-    />
+    <Animated.View style={[appStyle, style, skStyle]} />
   );
 
   if (!count || count === 1 || count === 0) {
