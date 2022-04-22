@@ -93,8 +93,7 @@ Skeleton with spacing value:
         <tr>
             <td><code>circle</code></td>
             <td>
-                Makes the skeleton circular by setting <code>borderRadius</code> to
-                <code>50%</code>.
+                Makes the skeleton circular by setting <code>borderRadius</code> to half of width.
             </td>
             <td><code>false</code></td>
         </tr>
