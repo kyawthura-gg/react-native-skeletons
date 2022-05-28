@@ -1,6 +1,6 @@
 {
   "name": "react-native-skeletons",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "Fully customizable small library with no extra dependencies for creating animated loading skeletons",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -34,7 +34,11 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "skeleton",
+    "shimmer",
+    "loading",
+    "placeholder"
   ],
   "repository": "https://github.com/kyawthura-gg/react-native-skeletons",
   "author": "Kyaw Thura <ggaryal@gmail.com> (https://github.com/kyawthura-gg)",
