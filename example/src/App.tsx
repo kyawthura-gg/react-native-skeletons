@@ -6,18 +6,31 @@ export default function App() {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Skeleton style={styles.mb10} />
-        <Skeleton circle width={50} height={50} />
-        <View style={styles.row}>
-          <Skeleton circle width={50} height={50} />
-          <Skeleton
-            count={2}
-            containerStyle={styles.ml14}
-            spacing={10}
-            color={'grey'}
-          />
+        <Skeleton height={150} />
+        <View style={[styles.row, styles.mt10]}>
+          <Skeleton circle width={60} height={60} />
+          <View style={[styles.flexG, styles.ml14]}>
+            <Skeleton width={'60%'} />
+            <Skeleton style={styles.mt10} width={'90%'} />
+          </View>
         </View>
-        <Skeleton count={14} spacing={20} />
+        <Skeleton count={4} containerStyle={styles.mt10} />
+        <View style={[styles.row, styles.mt20]}>
+          <Skeleton circle width={60} height={60} />
+          <View style={[styles.flexG, styles.ml14]}>
+            <Skeleton width={'60%'} />
+            <Skeleton style={styles.mt10} width={'90%'} />
+          </View>
+        </View>
+        <Skeleton count={4} containerStyle={styles.mt10} />
+        <View style={[styles.row, styles.mt20]}>
+          <Skeleton circle width={60} height={60} />
+          <View style={[styles.flexG, styles.ml14]}>
+            <Skeleton width={'60%'} />
+            <Skeleton style={styles.mt10} width={'90%'} />
+          </View>
+        </View>
+        <Skeleton count={4} containerStyle={styles.mt10} />
       </View>
     </SafeAreaView>
   );
@@ -31,8 +44,6 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginTop: 10,
-    marginBottom: 20,
     alignItems: 'center',
     overflow: 'hidden',
   },
@@ -41,5 +52,14 @@ const styles = StyleSheet.create({
   },
   mb10: {
     marginBottom: 10,
+  },
+  flexG: {
+    flexGrow: 1,
+  },
+  mt10: {
+    marginTop: 10,
+  },
+  mt20: {
+    marginTop: 20,
   },
 });
