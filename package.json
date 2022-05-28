@@ -34,7 +34,11 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "skeleton",
+    "shimmer",
+    "loading",
+    "placeholder"
   ],
   "repository": "https://github.com/kyawthura-gg/react-native-skeletons",
   "author": "Kyaw Thura <ggaryal@gmail.com> (https://github.com/kyawthura-gg)",
