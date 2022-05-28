@@ -2,7 +2,7 @@
 
 Fully customizable small library with no extra dependencies for creating animated loading skeletons.
 
-![](https://i.imgur.com/FiXdYZ7.gif)
+![](https://i.imgur.com/3ytcV9L.gif)
 
 ## Docs & Examples
 
