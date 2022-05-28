@@ -34,13 +34,12 @@ export const Skeleton: FC<SkeletonProps> = ({
     const opacityValue = opacity as unknown as number;
     let radius = borderRadius;
     if (circle) {
-      if (width !== height) {
-        console.warn('Circle skeleton should have the same width and height');
-      }
-      if (typeof width === 'number') {
-        radius = width / 2;
+      if (typeof width !== 'number') {
+        console.warn('Circle width need to be number value.');
+      } else if (width !== height) {
+        console.warn('Circle width and height need to be the same value');
       } else {
-        console.warn('Circle skeleton should have a number width');
+        radius = width / 2;
       }
     }
     return {
