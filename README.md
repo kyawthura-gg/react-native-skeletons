@@ -2,6 +2,14 @@
 
 Fully customizable small library with no extra dependencies for creating animated loading skeletons.
 
+![](https://i.imgur.com/FiXdYZ7.gif)
+
+## Docs & Examples
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Props Reference](#props-reference)
+
 ## Installation
 
 ```sh
