@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { Skeleton } from '../../src';
+import { Skeleton } from 'react-native-skeletons';
 
 const ProfileCardSkeleton = () => (
   <>
