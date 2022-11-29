@@ -5,7 +5,7 @@ import { Skeleton } from 'react-native-skeletons';
 const ProfileCardSkeleton = () => (
   <>
     <View style={[styles.row, styles.mt10]}>
-      <Skeleton circle width={60} height={60} />
+      <Skeleton circle width={60} />
       <View style={[styles.flexG, styles.ml14]}>
         <Skeleton width={'60%'} />
         <Skeleton style={styles.mt10} width={'90%'} />
