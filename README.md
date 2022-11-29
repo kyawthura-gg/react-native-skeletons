@@ -1,6 +1,6 @@
 # React Native Skeletons
 
-Fully customizable small library with no extra dependencies for creating animated loading skeletons.
+A fully customizable small library with zero dependencies for creating animated loading skeletons.
 
 ![](https://i.imgur.com/3ytcV9L.gif)
 
