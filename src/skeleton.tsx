@@ -1,50 +1,32 @@
 import React, { FC, useEffect, useMemo, useRef } from 'react';
-import { Animated, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import { Animated, StyleSheet, View, ViewStyle } from 'react-native';
+import type { SkeletonProps, SkeletonViewProps } from './skeleton.type';
 
-interface SkeletonProps {
-  count?: number;
-  circle?: boolean;
-  width?: number | string;
-  height?: number | string;
-  color?: string;
-  borderRadius?: number;
-  style?: StyleProp<ViewStyle>;
-  spacing?: number;
-  containerStyle?: StyleProp<ViewStyle>;
-}
-
-interface SkeletonViewProps {
-  skStyle?: StyleProp<ViewStyle>;
-}
-
-export const Skeleton: FC<SkeletonProps> = ({
+export const Skeleton = <T,>({
   count,
   circle,
   width = '100%',
-  height = 14,
   color = '#ebebeb',
   borderRadius = 4,
   spacing = 10,
   style,
   containerStyle,
-}) => {
+  height = 14,
+}: SkeletonProps<T>) => {
   const opacity = useRef(new Animated.Value(0.3)).current;
 
   const appStyle = useMemo<ViewStyle>(() => {
     const opacityValue = opacity as unknown as number;
     let radius = borderRadius;
-    if (circle) {
-      if (typeof width !== 'number') {
-        console.warn('Circle width need to be number value.');
-      } else if (width !== height) {
-        console.warn('Circle width and height need to be the same value');
-      } else {
-        radius = width / 2;
-      }
+    let h: string | number = height;
+
+    if (circle && typeof width === 'number') {
+      radius = width / 2;
+      h = width;
     }
     return {
-      width: width,
-      height: height,
+      width,
+      height: h,
       borderRadius: radius,
       backgroundColor: color,
       opacity: opacityValue,
