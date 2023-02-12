@@ -5,7 +5,6 @@ type DefaultTypes = {
   color?: string;
   style?: StyleProp<ViewStyle>;
   spacing?: number;
-  containerStyle?: StyleProp<ViewStyle>;
   borderRadius?: number;
 };
 
@@ -20,7 +19,3 @@ export type SkeletonProps<T = boolean> = T extends true
       height?: number | string;
       circle?: T;
     };
-
-export interface SkeletonViewProps {
-  skStyle?: StyleProp<ViewStyle>;
-}

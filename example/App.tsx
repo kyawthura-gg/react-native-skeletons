@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { Skeleton } from 'react-native-skeletons';
+import { Skeleton } from '../src';
 
 const ProfileCardSkeleton = () => (
   <>
-    <View style={[styles.row, styles.mt10]}>
+    <View style={[styles.row, styles.mt10, styles.mb10]}>
       <Skeleton circle width={60} />
       <View style={[styles.flexG, styles.ml14]}>
         <Skeleton width={'60%'} />
         <Skeleton style={styles.mt10} width={'90%'} />
       </View>
     </View>
-    <Skeleton count={4} containerStyle={styles.mt10} />
+    <Skeleton count={4} />
   </>
 );
 
