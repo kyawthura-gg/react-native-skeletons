@@ -51,8 +51,7 @@ Skeleton with custom styles:
     height={14}
     color={'grey'}
     borderRadius={10}
-    containerStyle={styles.myCustomStyle}
-    style={styles.skeletonStyle}
+    style={styles.myCustomStyle}
   />
 ```
 
@@ -85,7 +84,7 @@ Skeleton with spacing value:
         </tr>
         <tr>
             <td><code>height</code></td>
-            <td>The height of each skeleton line.</td>
+            <td>The height of each skeleton line. (Can't use if `circle` is being used )</td>
             <td>14</td>
         </tr>
         <tr>
@@ -110,14 +109,6 @@ Skeleton with spacing value:
             <td>
                 A custom style for the individual skeleton elements which is used
                 alongside the default style
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><code>containerStyle</code></td>
-            <td>
-                A custom style for the container of multiple skeletons that wraps the
-                individual skeleton elements. NOTE: this will only apply when count value is greater than 1, else you can use <code>style</code>
             </td>
             <td></td>
         </tr>
