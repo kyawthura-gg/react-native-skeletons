@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useMemo, useRef } from 'react';
-import { Animated, StyleSheet, View, ViewStyle } from 'react-native';
-import type { SkeletonProps, SkeletonViewProps } from './skeleton.type';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { Animated, ViewStyle } from 'react-native';
+import type { SkeletonProps } from './skeleton.type';
 
 export const Skeleton = <T,>({
   count,
@@ -10,7 +10,6 @@ export const Skeleton = <T,>({
   borderRadius = 4,
   spacing = 10,
   style,
-  containerStyle,
   height = 14,
 }: SkeletonProps<T>) => {
   const opacity = useRef(new Animated.Value(0.3)).current;
@@ -34,7 +33,7 @@ export const Skeleton = <T,>({
   }, [borderRadius, circle, color, height, opacity, width]);
 
   useEffect(() => {
-    Animated.loop(
+    const loopAnimate = Animated.loop(
       Animated.sequence([
         Animated.timing(opacity, {
           toValue: 1,
@@ -47,31 +46,26 @@ export const Skeleton = <T,>({
           useNativeDriver: true,
         }),
       ])
-    ).start();
+    );
+    loopAnimate.start();
+    return () => loopAnimate.stop();
   }, [opacity]);
 
-  const SkeletonView: FC<SkeletonViewProps> = ({ skStyle }) => (
-    <Animated.View style={[appStyle, style, skStyle]} />
-  );
-
   if (!count || count === 1 || count === 0) {
-    return <SkeletonView />;
+    return <Animated.View style={[appStyle, style]} />;
   }
   return (
-    <View style={[containerStyle, styles.wFull]}>
+    <>
       {Array.from({ length: count }).map((_, i) => (
-        <SkeletonView
+        <Animated.View
           key={i}
-          skStyle={{ marginBottom: i === count - 1 ? undefined : spacing }}
+          style={[
+            { marginBottom: i === count - 1 ? undefined : spacing },
+            appStyle,
+            style,
+          ]}
         />
       ))}
-    </View>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  wFull: {
-    width: '100%',
-    flexShrink: 1,
-  },
-});
