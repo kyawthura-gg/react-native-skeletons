@@ -1,9 +1,8 @@
-import type { StyleProp, ViewStyle, ViewProps } from 'react-native';
+import type { ViewProps } from 'react-native';
 
 type DefaultTypes = ViewProps & {
   count?: number;
   color?: string;
-  style?: StyleProp<ViewStyle>;
   spacing?: number;
   borderRadius?: number;
 };
