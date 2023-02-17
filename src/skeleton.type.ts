@@ -1,6 +1,6 @@
-import type { StyleProp, ViewStyle } from 'react-native';
+import type { StyleProp, ViewStyle, ViewProps } from 'react-native';
 
-type DefaultTypes = {
+type DefaultTypes = ViewProps & {
   count?: number;
   color?: string;
   style?: StyleProp<ViewStyle>;

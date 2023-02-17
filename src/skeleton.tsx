@@ -11,6 +11,7 @@ export const Skeleton = <T,>({
   spacing = 10,
   style,
   height = 14,
+  ...rest
 }: SkeletonProps<T>) => {
   const opacity = useRef(new Animated.Value(0.3)).current;
 
@@ -52,7 +53,9 @@ export const Skeleton = <T,>({
   }, [opacity]);
 
   if (!count || count === 1 || count === 0) {
-    return <Animated.View testID={'skeleton'} style={[appStyle, style]} />;
+    return (
+      <Animated.View testID={'skeleton'} style={[appStyle, style]} {...rest} />
+    );
   }
   return (
     <>
@@ -65,6 +68,7 @@ export const Skeleton = <T,>({
             appStyle,
             style,
           ]}
+          {...rest}
         />
       ))}
     </>
