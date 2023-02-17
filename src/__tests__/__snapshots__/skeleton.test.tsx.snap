@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton Component matches snapshot 1`] = `
+<View
+  collapsable={false}
+  style={
+    Object {
+      "backgroundColor": "#ebebeb",
+      "borderRadius": 4,
+      "height": 14,
+      "opacity": 0.3,
+      "width": "100%",
+    }
+  }
+  testID="skeleton"
+/>
+`;

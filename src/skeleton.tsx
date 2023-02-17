@@ -52,13 +52,14 @@ export const Skeleton = <T,>({
   }, [opacity]);
 
   if (!count || count === 1 || count === 0) {
-    return <Animated.View style={[appStyle, style]} />;
+    return <Animated.View testID={'skeleton'} style={[appStyle, style]} />;
   }
   return (
     <>
       {Array.from({ length: count }).map((_, i) => (
         <Animated.View
           key={i}
+          testID={'skeleton'}
           style={[
             { marginBottom: i === count - 1 ? undefined : spacing },
             appStyle,
