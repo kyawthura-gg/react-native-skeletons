@@ -9,14 +9,18 @@ describe('Skeleton Component', () => {
   });
 
   it('works with count prop', async () => {
-    const { findAllByTestId } = render(<Skeleton count={4} />);
+    const { findAllByTestId } = render(
+      <Skeleton testID={'skeleton'} count={4} />
+    );
     const elements = await findAllByTestId('skeleton');
     expect(elements.length).toBe(4);
   });
 
   it('works with color prop', () => {
     const color = '#fefefe';
-    const { getByTestId } = render(<Skeleton color={color} />);
+    const { getByTestId } = render(
+      <Skeleton testID={'skeleton'} color={color} />
+    );
 
     const element = getByTestId('skeleton');
     const bgColor = element.props.style.backgroundColor;
@@ -29,7 +33,9 @@ describe('Skeleton Component', () => {
       padding: 10,
       borderColor: 'black',
     };
-    const { getByTestId } = render(<Skeleton style={customStyle} />);
+    const { getByTestId } = render(
+      <Skeleton testID={'skeleton'} style={customStyle} />
+    );
 
     const element = getByTestId('skeleton');
     const style = element.props.style;
@@ -42,7 +48,7 @@ describe('Skeleton Component', () => {
   it('works with spacing prop with more than one count', async () => {
     const spacing = 20;
     const { findAllByTestId } = render(
-      <Skeleton count={2} spacing={spacing} />
+      <Skeleton testID={'skeleton'} count={2} spacing={spacing} />
     );
 
     const elements = await findAllByTestId('skeleton');
@@ -56,7 +62,9 @@ describe('Skeleton Component', () => {
   });
 
   it('should not works with spacing prop with one count', () => {
-    const { getByTestId } = render(<Skeleton spacing={20} />);
+    const { getByTestId } = render(
+      <Skeleton testID={'skeleton'} spacing={20} />
+    );
     const element = getByTestId('skeleton');
 
     const style = element.props.style;
@@ -65,7 +73,9 @@ describe('Skeleton Component', () => {
 
   it('works with borderRadius props', () => {
     const borderRadius = 10;
-    const { getByTestId } = render(<Skeleton borderRadius={borderRadius} />);
+    const { getByTestId } = render(
+      <Skeleton testID={'skeleton'} borderRadius={borderRadius} />
+    );
     const element = getByTestId('skeleton');
 
     const style = element.props.style;
