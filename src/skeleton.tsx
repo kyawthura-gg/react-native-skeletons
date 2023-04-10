@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef } from 'react';
-import { Animated, ViewStyle } from 'react-native';
+import { Animated, type ViewStyle } from 'react-native';
 import type { SkeletonProps } from './skeleton.type';
 
 export const Skeleton = <T,>({
@@ -10,7 +10,7 @@ export const Skeleton = <T,>({
   borderRadius = 4,
   spacing = 10,
   style,
-  height = 14,
+  height,
   ...rest
 }: SkeletonProps<T>) => {
   const opacity = useRef(new Animated.Value(0.3)).current;
@@ -18,12 +18,17 @@ export const Skeleton = <T,>({
   const appStyle = useMemo<ViewStyle>(() => {
     const opacityValue = opacity as unknown as number;
     let radius = borderRadius;
-    let h: string | number = height;
+    let h: string | number = height ?? 14;
+
+    if (__DEV__ && height && circle && width !== height) {
+      console.warn('width and height props must be equal when using as circle');
+    }
 
     if (circle && typeof width === 'number') {
       radius = width / 2;
       h = width;
     }
+
     return {
       width,
       height: h,
@@ -53,16 +58,13 @@ export const Skeleton = <T,>({
   }, [opacity]);
 
   if (!count || count === 1 || count === 0) {
-    return (
-      <Animated.View testID={'skeleton'} style={[appStyle, style]} {...rest} />
-    );
+    return <Animated.View style={[appStyle, style]} {...rest} />;
   }
   return (
     <>
       {Array.from({ length: count }).map((_, i) => (
         <Animated.View
           key={i}
-          testID={'skeleton'}
           style={[
             { marginBottom: i === count - 1 ? undefined : spacing },
             appStyle,
