@@ -12,6 +12,5 @@ exports[`Skeleton Component matches snapshot 1`] = `
       "width": "100%",
     }
   }
-  testID="skeleton"
 />
 `;
