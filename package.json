@@ -28,9 +28,9 @@
   ],
   "scripts": {
     "test": "jest",
-    "typescript": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "prepare": "bob build",
+    "prepack": "bob build",
     "release": "release-it",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install"
@@ -45,7 +45,7 @@
     "placeholder"
   ],
   "repository": "https://github.com/kyawthura-gg/react-native-skeletons",
-  "author": "Kyaw Thura <ggaryal@gmail.com> (https://github.com/kyawthura-gg)",
+  "author": "Kyaw Thura <kanaiyaaryal@gmail.com> (https://github.com/kyawthura-gg)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kyawthura-gg/react-native-skeletons/issues"
@@ -55,14 +55,13 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@arkweid/lefthook": "^0.7.7",
     "@commitlint/config-conventional": "^17.0.2",
+    "@evilmartians/lefthook": "^1.2.2",
     "@react-native-community/eslint-config": "^3.0.2",
     "@release-it/conventional-changelog": "^5.0.0",
-    "@testing-library/react-native": "^11.5.2",
+    "@testing-library/react-native": "^12.2.0",
     "@types/jest": "^28.1.2",
     "@types/react": "~17.0.21",
-    "@types/react-native": "0.70.0",
     "commitlint": "^17.0.2",
     "del-cli": "^5.0.0",
     "eslint": "^8.4.1",
@@ -71,12 +70,12 @@
     "jest": "^28.1.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "18.1.0",
-    "react-native": "0.70.5",
+    "react": "18.2.0",
+    "react-native": "0.72.3",
     "react-native-builder-bob": "^0.20.1",
     "react-test-renderer": "^18.2.0",
     "release-it": "^15.0.0",
-    "typescript": "^4.5.2"
+    "typescript": "^5.0.2"
   },
   "resolutions": {
     "@types/react": "17.0.21"
@@ -86,7 +85,7 @@
     "react-native": "*"
   },
   "engines": {
-    "node": ">= 16.0.0"
+    "node": ">= 18.0.0"
   },
   "jest": {
     "preset": "react-native",

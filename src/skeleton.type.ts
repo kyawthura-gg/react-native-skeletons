@@ -1,4 +1,4 @@
-import type { ViewProps } from 'react-native';
+import type { DimensionValue, ViewProps } from 'react-native';
 
 type DefaultTypes = ViewProps & {
   count?: number;
@@ -7,14 +7,8 @@ type DefaultTypes = ViewProps & {
   borderRadius?: number;
 };
 
-export type SkeletonProps<T = boolean> = T extends true
-  ? DefaultTypes & {
-      width: number;
-      circle?: T;
-      height?: 'Do not need to pass height for circle';
-    }
-  : DefaultTypes & {
-      width?: number | string;
-      height?: number | string;
-      circle?: T;
-    };
+export type SkeletonProps<T = boolean> = DefaultTypes & {
+  width?: T extends true ? number : DimensionValue;
+  circle?: T;
+  height?: T extends true ? never : DimensionValue;
+};
