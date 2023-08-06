@@ -5,20 +5,20 @@ import type { SkeletonProps } from './skeleton.type';
 export const Skeleton = <T,>({
   count,
   circle,
-  width = '100%',
+  width,
   color = '#ebebeb',
   borderRadius = 4,
   spacing = 10,
   style,
   height,
   ...rest
-}: SkeletonProps<T>) => {
+}: SkeletonProps<T>): JSX.Element => {
   const opacity = useRef(new Animated.Value(0.3)).current;
 
   const appStyle = useMemo<ViewStyle>(() => {
     const opacityValue = opacity as unknown as number;
     let radius = borderRadius;
-    let h: string | number = height ?? 14;
+    let h = height ?? 14;
 
     if (__DEV__ && height && circle && width !== height) {
       console.warn('width and height props must be equal when using as circle');
@@ -30,7 +30,7 @@ export const Skeleton = <T,>({
     }
 
     return {
-      width,
+      width: width ?? '100%',
       height: h,
       borderRadius: radius,
       backgroundColor: color,
@@ -57,22 +57,22 @@ export const Skeleton = <T,>({
     return () => loopAnimate.stop();
   }, [opacity]);
 
-  if (!count || count === 1 || count === 0) {
-    return <Animated.View style={[appStyle, style]} {...rest} />;
+  if (count && count > 1) {
+    return (
+      <>
+        {Array.from({ length: count }).map((_, i) => (
+          <Animated.View
+            key={i}
+            style={[
+              { marginBottom: i === count - 1 ? undefined : spacing },
+              appStyle,
+              style,
+            ]}
+            {...rest}
+          />
+        ))}
+      </>
+    );
   }
-  return (
-    <>
-      {Array.from({ length: count }).map((_, i) => (
-        <Animated.View
-          key={i}
-          style={[
-            { marginBottom: i === count - 1 ? undefined : spacing },
-            appStyle,
-            style,
-          ]}
-          {...rest}
-        />
-      ))}
-    </>
-  );
+  return <Animated.View style={[appStyle, style]} {...rest} />;
 };
