@@ -1,7 +1,5 @@
 # React Native Skeletons
 
-![bundle-size]
-
 A fully customizable small library with zero dependencies for creating animated loading skeletons.
 
 ![](https://i.imgur.com/3ytcV9L.gif)
@@ -131,5 +129,3 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
-
-[bundle-size]: https://img.badgesize.io/https:/unpkg.com/react-native-skeletons@1.3.3/lib/commonjs/index.js?style=flat-square&compression=gzip
