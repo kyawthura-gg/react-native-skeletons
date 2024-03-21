@@ -1,6 +1,23 @@
 import React, { useEffect, useMemo, useRef } from 'react';
-import { Animated, type ViewStyle } from 'react-native';
-import type { SkeletonProps } from './skeleton.type';
+import {
+  Animated,
+  type ViewStyle,
+  type DimensionValue,
+  type ViewProps,
+} from 'react-native';
+
+type DefaultTypes = ViewProps & {
+  count?: number;
+  color?: string;
+  spacing?: number;
+  borderRadius?: number;
+};
+
+export type SkeletonProps<T = boolean> = DefaultTypes & {
+  width?: T extends true ? number : DimensionValue;
+  circle?: T;
+  height?: T extends true ? never : DimensionValue;
+};
 
 export const Skeleton = <T,>({
   count,
