@@ -22,6 +22,10 @@ or
 npm install react-native-skeletons
 ```
 
+or
+
+Copy [this file](https://github.com/kyawthura-gg/react-native-skeletons/blob/main/src/skeleton.tsx)
+
 ## Usage
 
 Simple one line skeleton:
